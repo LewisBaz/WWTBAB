@@ -11,7 +11,9 @@ class StartViewController: UIViewController, GameViewControllerDelegate {
     
     @IBOutlet weak var gameLabel: UILabel!
     @IBOutlet weak var lastResultLabel: UILabel!
-    @IBAction func playButton(_ sender: Any) {}
+    @IBAction func playButton(_ sender: UIButton) {}
+    @IBAction func settingsButton(_ sender: Any) {}
+    @IBAction func addQuestionButton(_ sender: Any) {}
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destinationController = segue.destination as? GameViewController else { return }

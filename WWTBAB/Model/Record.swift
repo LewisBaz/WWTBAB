@@ -11,7 +11,7 @@ struct Record: Codable {
     let date: Date
     let allQuestions: Int
     let rightAnswers: Int
-    let totalMoneyOwned: Int
+    let totalMoneyOwned: Decimal
     let isPeopleOpinionButtonUsed: Bool
     let isDeleteTwoWrongAnswersButtonUsed: Bool
     let isFriendHelpButtonUsed: Bool

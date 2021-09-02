@@ -20,6 +20,7 @@ final class Game {
     private init() {
         self.records = recordSaver.recieveRecord()
     }
+    var sequence: Sequence = .oneByOne
         
     func addRecord(_ record: Record) {
         self.records.append(record)
