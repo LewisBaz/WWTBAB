@@ -9,16 +9,16 @@ import UIKit
 
 class ResultsTableViewController: UITableViewController {
     
+    let dateFormatter = DateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
         tableView.backgroundColor = .systemIndigo
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Game.shared.records.count
@@ -30,10 +30,7 @@ class ResultsTableViewController: UITableViewController {
         cell.backgroundColor = .systemPurple
         
         let record = Game.shared.records[indexPath.row]
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .short
-        cell.textLabel?.text = dateFormatter.string(from: record.date)
+        cell.textLabel?.text = self.dateFormatter.string(from: record.date)
         cell.detailTextLabel?.text = "\(record.totalMoneyOwned)$, \(record.rightAnswers)/\(record.allQuestions)"
 
         return cell
