@@ -30,19 +30,7 @@ class AddQuestionTableViewController: UITableViewController, UITextFieldDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: AddQuestionTableViewCell.reuseId, for: indexPath) as! AddQuestionTableViewCell
         cell.selectionStyle = .none
         switch indexPath.row {
-        case 0:
-            cell.labelText.text = answersForUser[indexPath.row]
-            cell.textField.tag = indexPath.row
-            cell.textField.addTarget(self, action: #selector(saveString), for: .editingDidEnd)
-        case 1:
-            cell.labelText.text = answersForUser[indexPath.row]
-            cell.textField.tag = indexPath.row
-            cell.textField.addTarget(self, action: #selector(saveString), for: .editingDidEnd)
-        case 2:
-            cell.labelText.text = answersForUser[indexPath.row]
-            cell.textField.tag = indexPath.row
-            cell.textField.addTarget(self, action: #selector(saveString), for: .editingDidEnd)
-        case 3:
+        case 0,1,2,3:
             cell.labelText.text = answersForUser[indexPath.row]
             cell.textField.tag = indexPath.row
             cell.textField.addTarget(self, action: #selector(saveString), for: .editingDidEnd)
@@ -107,27 +95,12 @@ class AddQuestionTableViewController: UITableViewController, UITextFieldDelegate
     }
     
     @objc func clearTextFileds(_ sender: UITextField) {
-        
-        guard let cell1 = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? AddQuestionTableViewCell else { return }
-        guard let cell2 = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? AddQuestionTableViewCell else { return }
-        guard let cell3 = self.tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? AddQuestionTableViewCell else { return }
-        guard let cell4 = self.tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? AddQuestionTableViewCell else { return }
-        guard let cell5 = self.tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as? AddQuestionTableViewCell else { return }
 
-        if cell1.textField.text != "" {
-            cell1.textField.text = ""
-        }
-        if cell2.textField.text != "" {
-            cell2.textField.text = ""
-        }
-        if cell3.textField.text != "" {
-            cell3.textField.text = ""
-        }
-        if cell4.textField.text != "" {
-            cell4.textField.text = ""
-        }
-        if cell5.textField.text != "" {
-            cell5.textField.text = ""
+        for i in 0...tableView.numberOfRows(inSection: 0) {
+            guard let cell = self.tableView.cellForRow(at: IndexPath(row: i, section: 0)) as? AddQuestionTableViewCell else { return }
+            if cell.textField.text != "" {
+                cell.textField.text = ""
+            }
         }
     }
     

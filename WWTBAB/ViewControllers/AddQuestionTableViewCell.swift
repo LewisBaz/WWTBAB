@@ -13,12 +13,8 @@ class AddQuestionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var labelText: UILabel!
     @IBOutlet weak var textField: UITextField!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
+
     override func prepareForReuse() {
-        super.prepareForReuse()
+        textField = nil
     }
 }
