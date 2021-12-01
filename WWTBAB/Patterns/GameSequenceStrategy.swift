@@ -17,15 +17,12 @@ protocol GameSequenceStrategy {
 
 class GameSequenceOneByOne: GameSequenceStrategy {
     func setSequence() -> [Question] {
-        let questions = Question.allQuestons
-        return questions
+        return Question.allQuestons
     }
 }
 
 class GameSequenceRandom: GameSequenceStrategy {
     func setSequence() -> [Question] {
-        var questions = Question.allQuestons
-        questions.shuffle()
-        return questions
+        return Question.allQuestons.shuffled()
     }
 }
